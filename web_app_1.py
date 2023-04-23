@@ -6,7 +6,13 @@ from stendhalgpt_fct import *
 import pandas as pd
 import nltk
 
+from PIL import Image 
 
+import requests
+
+import numpy as np
+import streamlit as st
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
 
 
@@ -14,8 +20,8 @@ import nltk
 def lauchn():
         
     with st.sidebar:
-                tabs = on_hover_tabs(tabName=['Accueil','StendhalGPT', 'StendhalGPT Expert', 'StendhalGPT MultipleTextes'], 
-                                    iconName=['dashboard','home',  'toll', 'analytics'],
+                tabs = on_hover_tabs(tabName=['Accueil','StendhalGPT', 'StendhalGPT Expert', 'StendhalGPT MultipleTextes', 'StendhalGPT Gogh'], 
+                                    iconName=['dashboard','home',  'toll', 'analytics', 'analytics'],
                                     styles = {'navtab': {'background-color':'#FFFFFF',
                                                         'color': '#000000',
                                                         'font-size': '18px',
@@ -71,12 +77,6 @@ def lauchn():
 
     if tabs == 'Accueil':
         st.info('Si vous rencontrez des difficultés, vous pouvez nous contacter dans la page Contact de notre site.')
-
-
-
-        st.markdown('[Cliquez ici](https://www.stendhalgpt.fr/newsletter/) pour vous inscrire à la newsletter.')
-        st.markdown('[Cliquez ici](https://www.stendhalgpt.fr/docs-category/doc/) pour accéder à la documentation.')
-
         st.caption('version 0.6.0')
 
        
@@ -218,7 +218,6 @@ def lauchn():
 
                             except:
                                 st.warning('Votre texte est trop court.')
-                        words_to_highlight = []
                         i = 34
                         df = pd.DataFrame(resul2, columns=['Mots', 'Occurence'])
 
@@ -392,3 +391,31 @@ def lauchn():
 
             except:
              st.warning('Il y a eu une erreur dans le traitement de vos textes.')
+
+    elif tabs == 'StendhalGPT Gogh':
+        st.title('Vérifier votre image via StendhalGPT Gogh')
+
+    
+            
+    # Téléchargement de l'image depuis un fichier local
+        image_url = st.text_input('Entrez une URL d\'image:')
+        uploaded_file = st.file_uploader("Choisissez une image...", type=["jpg", "jpeg", "png"])
+        
+        
+        if st.button('Analyser l\'image'):
+            if image_url:
+                try:
+                    response = requests.get(image_url)
+                    image = cv2.imdecode(np.frombuffer(response.content, np.uint8), 1)
+                    show_filtered_image(image)
+                except:
+                    st.warning("Impossible de télécharger l'image à partir de l'URL fournie.")
+
+            elif uploaded_file is not None:
+                try:
+                    image = cv2.imdecode(np.fromstring(uploaded_file.read(), np.uint8), 1)
+                    show_filtered_image(image)
+                except:
+                     st.warning('Votre image n\'est pas valide.')
+            else:
+                st.warning("Veuillez choisir une image à analyser.")

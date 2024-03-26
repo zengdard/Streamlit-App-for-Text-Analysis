@@ -2,7 +2,7 @@ import streamlit as st
 
 from st_on_hover_tabs import on_hover_tabs
 
-from stendhalgpt_fct import *
+from  _fct import *
 import pandas as pd
 import nltk
 
@@ -20,7 +20,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 def lauchn():
         
     with st.sidebar:
-                tabs = on_hover_tabs(tabName=['Accueil','StendhalGPT', 'StendhalGPT Expert', 'StendhalGPT MultipleTextes', 'StendhalGPT Gogh'], 
+                tabs = on_hover_tabs(tabName=['Accueil',' ', '  Expert', '  MultipleTextes', '  Gogh'], 
                                     iconName=['dashboard','home',  'toll', 'analytics', 'analytics'],
                                     styles = {'navtab': {'background-color':'#FFFFFF',
                                                         'color': '#000000',
@@ -80,7 +80,7 @@ def lauchn():
         st.caption('version 0.6.0')
 
        
-    elif tabs == 'StendhalGPT':
+    elif tabs == ' ':
         bar.progress(0) 
 
         st.info('En dessous de 130 mots, il est préférable d\'utiliser la fonction Expert.')
@@ -142,8 +142,8 @@ def lauchn():
                 st.warning('Un problème est survenu, réessayez ou utilisez un autre module.')
 
 
-    elif tabs == 'StendhalGPT Expert':
-        st.info('Vous utilisez actuellement StendhalGPT Expert')
+    elif tabs == '  Expert':
+        st.info('Vous utilisez actuellement   Expert')
         with col3:
 
 
@@ -365,11 +365,11 @@ def lauchn():
                     bar.progress(100) 
                 
 
-    elif tabs == "StendhalGPT MultipleTextes":
+    elif tabs == "  MultipleTextes":
 
-        st.subheader("StendhalGPT MultipleTextes")
-        st.markdown("StendhalGPT MultipleTextes mesure les caractéristiques des textes fournis et les représente dans un plan bidimensionnel.")
-        st.info('StendhalGPT MultipleTextes est susceptible d\'évoluer.')
+        st.subheader("  MultipleTextes")
+        st.markdown("  MultipleTextes mesure les caractéristiques des textes fournis et les représente dans un plan bidimensionnel.")
+        st.info('  MultipleTextes est susceptible d\'évoluer.')
 
 
         texte1 = st.text_input("Texte 1")
@@ -392,8 +392,8 @@ def lauchn():
             except:
              st.warning('Il y a eu une erreur dans le traitement de vos textes.')
 
-    elif tabs == 'StendhalGPT Gogh':
-        st.title('Vérifier votre image via StendhalGPT Gogh')
+    elif tabs == '  Gogh':
+        st.title('Vérifier votre image via   Gogh')
 
     
             

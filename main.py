@@ -54,7 +54,7 @@ def connexion_session():
             load_css_file(CSS_FILE)
 
             with st.sidebar:
-                tab = on_hover_tabs(tabName=['Se connecter','S\'abonner à StendhalGPT+'], 
+                tab = on_hover_tabs(tabName=['Se connecter','S\'abonner à +'], 
                                     iconName=['dashboard','home'],
                                     styles = {'navtab': {'background-color':'#FFFFFF',
                                                         'color': '#000000',
@@ -74,17 +74,12 @@ def connexion_session():
 
             if tab == 'Se connecter' :
                     
-                    st.title('StendhalGPT')
-                    
-                    _email = st.text_input("Entrez le mail avec lequel vous avez procédé au paiement ici !", '')
-
-                    stripe.api_key = "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"
 
                     # Récupérer la liste des utilisateurs Stripe
 
-                    accepted_terms = st.checkbox("J'accepte les termes et conditions d'utilisation de StendhalGPT.")
+                    accepted_terms = st.checkbox("J'accepte les termes et conditions d'utilisation de  .")
 
-                    if st.button('Se connecter à StendhalGPT') :
+                    if st.button('Se connecter à ') :
                         if validate_email(_email)   :
                             
                             if accepted_terms : 
@@ -108,14 +103,14 @@ def connexion_session():
                                 st.warning('Veuillez accepter les termes et conditions.')
 
                         else:
-                            st.warning('Addresse mail non valide. Si vous rencontrez des problèmes de connexion vous pouvez nous contacter à cette addresse contact@stendhalgpt.fr')
+                            st.warning('Addresse mail non valide. Si vous rencontrez des problèmes de connexion vous pouvez nous contacter à cette addresse contact@ .fr')
 
-            elif tab == 'S\'abonner à StendhalGPT+':
-                    st.title("StendhalGPT+")
+            elif tab == 'S\'abonner à  +':
+                    st.title(" +")
                     #left_col, right_col = st.columns((2, 1))
                     
                 
-                    st.subheader('Accédez à l\'entièreté de StendhalGPT via StendhalGPT+')
+                    st.subheader('Accédez à l\'entièreté de   via  +')
 
 
 
@@ -136,7 +131,7 @@ def connexion_session():
                           ],
                     "https://assets6.lottiefiles.com/packages/lf20_xbf1be8x.json": [
                         "Vérification de Sources",
-                        "Méfiez-vous des articles et des contenus générés par des intelligences artificielles à votre insu, en certifiant vos lectures par StendhalGPT."
+                        "Méfiez-vous des articles et des contenus générés par des intelligences artificielles à votre insu, en certifiant vos lectures par  ."
                               ],
                     }
                     for image, description in features.items():
